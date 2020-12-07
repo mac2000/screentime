@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ScreenTime</title>
+    <style>
+        body {
+            width: 400px;
+            min-width: 400px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: .5em;
+        }
+
+        #log img {
+            width: 24px;
+            height: auto;
+        }
+
+        #log tr td:last-child {
+            white-space: nowrap;
+        }
+
+        th {
+            text-align: left
+        }
+
+        input[name="period"] {
+            display: none
+        }
+
+        #period {
+            display: flex;
+            column-gap: 1em;
+        }
+
+        #period button {
+            flex: 1;
+        }
+
+        .percent {
+            height: .25em;
+            background: lightgray;
+            margin-top: 0.5em;
+        }
+
+        #chart th,
+        #chart td {
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        .col {
+            background: lightgray;
+        }
+    </style>
+    <script src="popup.js"></script>
+</head>
+<body>
+<fieldset id="period">
+    <legend>Period</legend>
+    <button id="w2d" disabled>Current week</button>
+    <button id="lw">Previous week</button>
+</fieldset>
+<fieldset>
+    <legend>Chart</legend>
+    <div id="chart">
+        <table width="100%" height="100">
+            <tbody>
+            <tr>
+                <td><div id="mon" class="col" data-day="1"></div></td>
+                <td><div id="tue" class="col" data-day="2"></div></td>
+                <td><div id="wed" class="col" data-day="3"></div></td>
+                <td><div id="thu" class="col" data-day="4"></div></td>
+                <td><div id="fri" class="col" data-day="5"></div></td>
+                <td><div id="sat" class="col" data-day="6"></div></td>
+                <td><div id="sun" class="col" data-day="0"></div></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Statistics</legend>
+    <table>
+        <tr>
+            <th>days</th>
+            <td id="days">0</td>
+        </tr>
+        <tr>
+            <th>domains</th>
+            <td id="domains">0</td>
+        </tr>
+        <tr>
+            <th>seconds</th>
+            <td id="seconds">0</td>
+        </tr>
+        <tr>
+            <th>avg</th>
+            <td id="avg">0</td>
+        </tr>
+        <tr>
+            <th>max</th>
+            <td id="max">0</td>
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Details</legend>
+    <table width="100%">
+        <thead>
+        <tr>
+            <th width="1"></th>
+            <th width="99%">domain</th>
+            <th width="1" nowrap>time</th>
+        </tr>
+        </thead>
+        <tbody id="log"></tbody>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Overall</legend>
+    <table>
+        <tr>
+            <th>days</th>
+            <td id="alldays">0</td>
+        </tr>
+        <tr>
+            <th>domains</th>
+            <td id="alldomains">0</td>
+        </tr>
+        <tr>
+            <th>seconds</th>
+            <td id="allseconds">0</td>
+        </tr>
+        <tr>
+            <th>avg</th>
+            <td id="allavg">0</td>
+        </tr>
+        <tr>
+            <th>max</th>
+            <td id="allmax">0</td>
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Storage</legend>
+    <table>
+        <tr>
+            <th>size</th>
+            <td id="size">0</td>
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Actions</legend>
+    <button id="clear">clear</button>
+    <button id="seed">seed</button>
+    <button id="json">export (json)</button>
+    <button id="csv">export (csv)</button>
+</fieldset>
+</body>
+</html>

@@ -2,6 +2,10 @@
 
 Extension will collect screen time for active tabs
 
+https://chrome.google.com/webstore/detail/screen-time/plckpjcbdofdpbljigbjkohpfccafged
+
+https://youtu.be/il2AdM_O-AA
+
 ![Screenshot](images/screenshot.png)
 
 ## Notes
